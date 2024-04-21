@@ -1,0 +1,146 @@
+.title a, .header {
+  background-color: white;
+  color: white; /* Dark gray text color */
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #3b591d;
+  position: sticky;
+  width: 100%; /* Full width */
+  text-align: center; /* Center-align the text */
+  font-size: 20px; /* Font size */
+  font-family: 'Verdana', cursive;
+  text-transform: uppercase; /* Convert text to uppercase */
+  border-bottom: 2px solid #9FCF9F; /* Bottom border */
+  margin:0;
+  z-index:99;
+  text-decoration: none;
+  padding-bottom: 20px;
+}
+
+.title a{
+  font-size: 50px;
+  -webkit-text-stroke-width: 7px;
+  text-decoration: none;
+}
+
+.outer p {
+  font-size: 3vmin;
+}
+
+.chatButton Button {
+  background-color: #1d5949;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  height: 80px;
+  color: white;
+  cursor: pointer;
+  font-size: 30px;
+  
+}
+
+.homeImage img {
+  width: 100%;
+  height: auto;
+
+}
+
+.App {
+  text-align: center;
+  background-color: #C1E1C1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 15;
+  color: black;
+  padding-bottom: 20px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.outer {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 20px;
+  background-color:white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.conversation-item {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  width: fit-content;
+  max-width: 500px;
+}
+
+.conversation-item.prompt {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.conversation-item.response {
+  align-self: flex-start;
+  margin-right: auto;
+  text-align: left;
+}
+
+.input-container {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+.input-container input {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.input-container button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
