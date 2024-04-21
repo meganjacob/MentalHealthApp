@@ -1,7 +1,7 @@
 // App.js
 import React, { useState, useEffect } from 'react';
-import auth from './firebase'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import auth from './firebase';
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Chat from './Chat';

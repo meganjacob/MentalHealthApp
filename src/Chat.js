@@ -15,13 +15,17 @@ function ChatPage() {
 
   async function generateText() {
     try {
+      const conversationsString = JSON.stringify(conversations);
       // Access your API key as an environment variable (see "Set up your API key" above)
       const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY);
       
       // For text-only input, use the gemini-pro model
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-      const result = await model.generateContent("Answer the prompt from the following perspective, keeping responsese below 100 words. You are a therapist. You respond by first empathizing with a person's situation, then providing guidance and support. This is very important, make sure that you respond like a therapist and are personal. However, do not talk much about yourself, focus on the patient. Do not use overly complex words. Do not give generic advice and give unique/personal suggestions based on therapy approaches. Take a conversationalist tone and act like a friend/human, do not be formal. Do not make assumptions or act under assumptions (if they have not said they are going through a tough time, do not assume that they are). Use minimal words while providing a comprehensive response. Be careful about each word adding value. Do not be dramatic or escalate situations. Here is the prompt: " + prompt + "\n Here is the previous conversation you have had with this patient. Please take into account the previous details as well." + conversations);
+      const result = await model.generateContent("Answer the prompt from the following perspective, keeping responsese below 100 words. You are a therapist. You respond by first empathizing with a person's situation, then providing guidance and support. This is very important, make sure that you respond like a therapist and are personal. However, do not talk much about yourself, focus on the patient. Do not use overly complex words. Do not give generic advice and give unique/personal suggestions based on therapy approaches. Take a conversationalist tone and act like a friend/human, do not be formal. Do not make assumptions or act under assumptions (if they have not said they are going through a tough time, do not assume that they are). Use minimal words while providing a comprehensive response. Be careful about each word adding value. Do not be dramatic or escalate situations. Here is the prompt: " + prompt + "\n Here is the previous conversation you have had with this patient. Please take into account the previous details as well." + conversationsString);
+      console.log("Answer the prompt from the following perspective, keeping responsese below 100 words. You are a therapist. You respond by first empathizing with a person's situation, then providing guidance and support. This is very important, make sure that you respond like a therapist and are personal. However, do not talk much about yourself, focus on the patient. Do not use overly complex words. Do not give generic advice and give unique/personal suggestions based on therapy approaches. Take a conversationalist tone and act like a friend/human, do not be formal. Do not make assumptions or act under assumptions (if they have not said they are going through a tough time, do not assume that they are). Use minimal words while providing a comprehensive response. Be careful about each word adding value. Do not be dramatic or escalate situations. Here is the prompt: " + prompt + "\n Here is the previous conversation you have had with this patient. Please take into account the previous details as well." + conversationsString);
+
+      // all caps, examples
       const response = await result.response;
       const text = await response.text();
       setGeneratedText(text);
