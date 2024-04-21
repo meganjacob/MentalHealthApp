@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -22,10 +21,8 @@ function ChatPage() {
       // For text-only input, use the gemini-pro model
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-      const result = await model.generateContent("Answer the prompt from the following perspective, keeping responsese below 100 words. You are a therapist. You respond by first empathizing with a person's situation, then providing guidance and support. This is very important, make sure that you respond like a therapist and are personal. However, do not talk much about yourself, focus on the patient. Do not use overly complex words. Do not give generic advice and give unique/personal suggestions based on therapy approaches. Take a conversationalist tone and act like a friend/human, do not be formal. Do not make assumptions or act under assumptions (if they have not said they are going through a tough time, do not assume that they are). Use minimal words while providing a comprehensive response. Be careful about each word adding value. Do not be dramatic or escalate situations. Here is the prompt: " + prompt + "\n Here is the previous conversation you have had with this patient. Please take into account the previous details as well." + conversationsString);
-      console.log("Answer the prompt from the following perspective, keeping responsese below 100 words. You are a therapist. You respond by first empathizing with a person's situation, then providing guidance and support. This is very important, make sure that you respond like a therapist and are personal. However, do not talk much about yourself, focus on the patient. Do not use overly complex words. Do not give generic advice and give unique/personal suggestions based on therapy approaches. Take a conversationalist tone and act like a friend/human, do not be formal. Do not make assumptions or act under assumptions (if they have not said they are going through a tough time, do not assume that they are). Use minimal words while providing a comprehensive response. Be careful about each word adding value. Do not be dramatic or escalate situations. Here is the prompt: " + prompt + "\n Here is the previous conversation you have had with this patient. Please take into account the previous details as well." + conversationsString);
+      const result = await model.generateContent("Answer the prompt as a professional therapist. Your responses should be detailed and specific, but also minimal(if possible below 20 words, otherwise must be below 50). You must make specific, unqiue, and personal recommendations based on psychological studies and topics. Take a conversationalist tone and be genuine but DO NOT BE CHEESY and NO GENERIC ADVICE. Be careful about each word, each word should add significant value." + prompt + "\n Here is the previous conversation you have had with this patient. Please take into account the previous details as well. DO NOT SHOW PREVIOUS RESPONSES but do use them when thinking about your next one" + conversationsString);
 
-      // all caps, examples
       const response = await result.response;
       const text = await response.text();
       setGeneratedText(text);
@@ -42,7 +39,7 @@ function ChatPage() {
         <div className="conversation">
           {conversations.map((conv, index) => (
             <div key={index}>
-              <p className="conversation-item prompt">{conv.prompt}</p>
+              {conv.prompt && <p className="conversation-item prompt">{conv.prompt}</p>}
               <p className="conversation-item response">{conv.response}</p>
             </div>
           ))}
